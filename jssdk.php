@@ -33,7 +33,7 @@ class JSSDK {
     );
     return $signPackage; 
   }
-
+  //自动生成16位临时字符串
   private function createNonceStr($length = 16) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $str = "";

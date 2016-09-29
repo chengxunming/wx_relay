@@ -26,17 +26,22 @@ $signPackage = $jssdk->GetSignPackage();
    * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
    */
   wx.config({
-    debug: true,
-    appId: '<?php echo $signPackage["appId"];?>',
+    beta: true, // 开启内测接口调用，注入wx.invoke方法,非常重要!!必须有这个
+    debug: true,//开启调试接口，alert运行结果
+    appId: '<?php echo $signPackage["appId"];?>',//必填，公众号的唯一标识
     timestamp: <?php echo $signPackage["timestamp"];?>,
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
     signature: '<?php echo $signPackage["signature"];?>',
     jsApiList: [
       // 所有要调用的 API 都要加到这个列表中
+       'configWXDeviceWiFi',
     ]
   });
   wx.ready(function () {
     // 在这里调用 API
+    wx.invoke('configWXDeviceWiFi', {}, function (res) { 
+    
+    });
   });
 </script>
 </html>
